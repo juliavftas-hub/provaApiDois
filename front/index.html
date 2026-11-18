@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de usuário</title>
+    <link rel="stylesheet" href="styles/estilo.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1> Gestão de usuários</h1>
+            <p>Cadastre, consulte, atualize e remova usuários em um só lugar</p>
+        </header>
+ 
+        <section>
+            <div>
+                <span>Dados do usuário</span>
+                <h2>Gerenciar cadastro</h2>
+            </div>
+            <div class="fields">
+                <label class="field">
+                    <span>ID:</span>
+                    <input type="text" id="id" placeholder="Ex: 007" autocomplete="off">
+                </label>
+ 
+                <label class="field">
+                    <span>CPF:</span>
+                    <input type="text" id="cpf" placeholder="cpf" autocomplete="off">
+                </label>
+
+                    <label class="field">
+                    <span>email:</span>
+                    <input type="text" id="email" placeholder="email" autocomplete="off">
+                </label>
+            </div>
+ 
+            <div class="action">
+                <button class="primary" type="button" onclick="criar()">Criar usuário</button>
+                <button class="secundary" type="button" onclick="Buscartodos()">Buscar todos</button>
+                <button class="secundary" type="button" onclick="Alterar()">Alterar</button>
+                <button class="danger" type="button" onclick="Deletar()">Deletar</button>
+ 
+            </div>
+ 
+            <p class="feedback" id="resultado"></p>
+        </section>
+ 
+        <section>
+            <div>
+                <span>Cadastrados</span>
+                <h2>Lista de usuário</h2>
+            </div>
+            <ul id="listaUsuarios"> </ul>
+        </section>
+    </main>
+ 
+    <script src="scripts/index.js"></script>
+</body>
+</html>
