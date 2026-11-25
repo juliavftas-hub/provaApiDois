@@ -1,10 +1,12 @@
-async function criar() {
+// post
+
+async function criar() { 
 
  const id = document.getElementById('id').value
  const cpf = document.getElementById('cpf').value
  const email = document.getElementById('email').value
 
- //realizar req pro bacck
+ //realizar req pro back
 
  const response = await fetch(
     'http://localhost:3000/livro/cadastro',
@@ -27,8 +29,9 @@ async function criar() {
  resultado.innerText = data.message
 }
 
+// esse é um get
 async function Buscartodos() {
- const response = await fetch ('http://localhost:3000/livro')
+ const response = await fetch ('http://localhost:3000/livro/cadastro')
  const data = await response.json()
 
  console.log(data)
@@ -36,20 +39,40 @@ async function Buscartodos() {
  const lista = document.getElementById("listaUsuarios")
  lista.innerHTML = ""
 
-    data.forEach(pessoa => {
+    data.pessoa.forEach(pessoa => {
         const li = document.createElement("li")
         li.innerText = "ID " + pessoa.id + " CPF: " + pessoa.cpf + " email: " + pessoa.email
         lista.appendChild(li)
     })
 }
 
+//put
 
-function Alterar() {
+async function Alterar() {
+    const id = document.getElementById('id').value
+    const cpf = document.getElementById('cpf').value
+    const email = document.getElementById('email').value
 
-    alert ('oie')
+    const response = await fetch("http://localhost:3000/livro/cadastro/" + id, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cpf, email })
+    })
+
+    const data = await response.json()
+    document.getElementById('resultado').innerText = data.message
 }
 
-function Deletar() {
+// esse é delete
+async function Deletar() {
 
-    alert ('oie')
+    const id = document.getElementById('id').value // pega o id digitado
+
+    // DELETE: o id vai na URL, sem body e sem Content-Type
+    const response = await fetch(`http://localhost:3000/livro/cadastro/${id}`, {
+        method: "DELETE"
+    })
+
+    const data = await response.json()
+    document.getElementById('resultado').innerText = data.message
 }

@@ -143,3 +143,19 @@ app.listen(3000, () => {
 })
 
 
+app.put("/livro/cadastro/:id", (req, res) => {
+    const id = req.params.id
+    const { cpf, email } = req.body
+
+    const index = banco.findIndex(p => p.id == id)
+
+    if (index == -1) {
+        res.send({ message: "id não encontrado!" })
+        return
+    }
+
+    banco[index].cpf = cpf
+    banco[index].email = email
+
+    res.send({ message: "usuário atualizado com sucesso!" })
+})
